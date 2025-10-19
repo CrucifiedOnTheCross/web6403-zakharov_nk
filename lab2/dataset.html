@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Датасет | Oncology CNN</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title"><span class="accent">Oncology</span> CNN</h1>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a class="nav-link" href="index.html">Главная</a>
+        <a class="nav-link active" href="dataset.html">Датасет</a>
+        <a class="nav-link" href="model.html">Модель</a>
+        <a class="nav-link" href="results.html">Результаты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Описание и структура набора данных</h2>
+      <p>
+        В основе данного исследования лежит общедоступный набор данных <strong>HAM10000</strong> ("Human Against Machine
+        with 10000 Training Images"). Этот датасет представляет собой коллекцию дерматоскопических изображений
+        распространённых пигментных поражений кожи и является признанным стандартом для задач автоматической
+        классификации в дерматологии.
+      </p>
+    </section>
+
+    <section>
+      <h3>Описание классов</h3>
+      <p>Датасет включает 7 классов дерматологических поражений, каждый из которых представляет собой отдельную
+        диагностическую категорию:</p>
+      <ul>
+        <li><strong>akiec:</strong> Актинические кератозы и внутриэпителиальная карцинома — предраковые поражения,
+          вызванные длительным воздействием солнца.</li>
+        <li><strong>bcc:</strong> Базально-клеточная карцинома — наиболее распространённый вид рака кожи.</li>
+        <li><strong>bkl:</strong> Доброкачественные кератозоподобные поражения (себорейный кератоз, лихеноидный
+          кератоз).</li>
+        <li><strong>df:</strong> Дерматофиброма — доброкачественное новообразование кожи.</li>
+        <li><strong>mel:</strong> Меланома — наиболее опасный вид рака кожи.</li>
+        <li><strong>nv:</strong> Меланоцитарные невусы (родинки) — доброкачественные скопления меланоцитов.</li>
+        <li><strong>vasc:</strong> Сосудистые поражения (ангиомы, ангиокератомы, пиогенные гранулемы).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Предобработка и разделение данных</h3>
+      <p>
+        Перед подачей в нейронную сеть все изображения прошли через конвейер предобработки, который был адаптирован под
+        требования каждой конкретной архитектуры. Этот процесс включал:
+      </p>
+      <ol>
+        <li><strong>Изменение размера:</strong> Изображения приводились к разрешению, ожидаемому на входе каждой
+          предобученной модели (например, 224x224 для ResNet/DenseNet, или специфичные размеры для EfficientNet).</li>
+        <li><strong>Нормализация:</strong> Значения пикселей нормализовались с использованием средних значений и
+          стандартных отклонений, на которых обучались исходные модели (как правило, это статистики набора данных
+          ImageNet). Этот шаг является обязательным для корректной работы моделей в режиме трансферного обучения.</li>
+      </ol>
+      <p>
+        Для обеспечения объективной оценки модели, исходный набор данных был разделён на обучающую (training),
+        валидационную (validation) и тестовую (test) выборки. Разделение проводилось с использованием
+        <strong>стратификации</strong> для сохранения исходного распределения классов во всех трёх подвыборках.
+      </p>
+    </section>
+
+    <section class="table-wrap">
+      <h3>Распределение данных по классам и выборкам</h3>
+      <p>В таблице ниже представлено точное количественное распределение изображений. Ключевой характеристикой этого
+        датасета является <strong>сильный дисбаланс классов</strong>: класс меланоцитарных невусов (nv) значительно
+        превосходит по численности все остальные, что требует применения специальных техник при обучении и оценке
+        моделей.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Класс</th>
+            <th>Train</th>
+            <th>Val</th>
+            <th>Test</th>
+            <th>Всего</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="align-left">akiec</td>
+            <td class="align-right">261</td>
+            <td class="align-center">32</td>
+            <td class="align-center">34</td>
+            <td class="align-center">327</td>
+          </tr>
+          <tr>
+            <td class="align-left">bcc</td>
+            <td class="align-right">411</td>
+            <td class="align-center">51</td>
+            <td class="align-center">52</td>
+            <td class="align-center">514</td>
+          </tr>
+          <tr>
+            <td class="align-left">bkl</td>
+            <td class="align-right">879</td>
+            <td class="align-center">109</td>
+            <td class="align-center">111</td>
+            <td class="align-center">1099</td>
+          </tr>
+          <tr>
+            <td class="align-left">df</td>
+            <td class="align-right">92</td>
+            <td class="align-center">11</td>
+            <td class="align-center">12</td>
+            <td class="align-center">115</td>
+          </tr>
+          <tr>
+            <td class="align-left">mel</td>
+            <td class="align-right">890</td>
+            <td class="align-center">111</td>
+            <td class="align-center">112</td>
+            <td class="align-center">1113</td>
+          </tr>
+          <tr>
+            <td class="align-left">nv</td>
+            <td class="align-right">5364</td>
+            <td class="align-center">670</td>
+            <td class="align-center">671</td>
+            <td class="align-center">6705</td>
+          </tr>
+          <tr>
+            <td class="align-left">vasc</td>
+            <td class="align-right">113</td>
+            <td class="align-center">14</td>
+            <td class="align-center">15</td>
+            <td class="align-center">142</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th class="align-left">Всего</th>
+            <th class="align-right">8012</th>
+            <th class="align-center">1001</th>
+            <th class="align-center">1002</th>
+            <th class="align-center">10015</th>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section class="class-gallery">
+      <h3>Визуальные примеры классов</h3>
+      <div class="cards class-cards">
+        <figure class="card class-card">
+          <img src="./img/akiec.jpg" alt="akiec — Актинический кератоз" />
+          <figcaption>akiec (Актинический кератоз)</figcaption>
+        </figure>
+        <figure class="card class-card">
+          <img src="./img/bcc.jpg" alt="bcc — Базально-клеточная карцинома" />
+          <figcaption>bcc (Базально-клеточная карцинома)</figcaption>
+        </figure>
+        <figure class="card class-card">
+          <img src="./img/bkl.jpg" alt="bkl — Доброкачественный кератоз" />
+          <figcaption>bkl (Доброкачественный кератоз)</figcaption>
+        </figure>
+        <figure class="card class-card">
+          <img src="./img/df.jpg" alt="df — Дерматофиброма" />
+          <figcaption>df (Дерматофиброма)</figcaption>
+        </figure>
+        <figure class="card class-card">
+          <img src="./img/mel.jpg" alt="mel — Меланома" />
+          <figcaption>mel (Меланома)</figcaption>
+        </figure>
+        <figure class="card class-card">
+          <img src="./img/nv.jpg" alt="nv — Меланоцитарный невус" />
+          <figcaption>nv (Меланоцитарный невус)</figcaption>
+        </figure>
+        <figure class="card class-card">
+          <img src="./img/vask.jpg" alt="vasc — Сосудистое поражение" />
+          <figcaption>vasc (Сосудистое поражение)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>

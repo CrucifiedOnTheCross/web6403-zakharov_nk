@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oncology CNN | Классификация образований кожи</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title"><span class="accent">Oncology</span> CNN</h1>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a class="nav-link active" href="index.html">Главная</a>
+        <a class="nav-link" href="dataset.html">Датасет</a>
+        <a class="nav-link" href="model.html">Модель</a>
+        <a class="nav-link" href="results.html">Результаты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="hero" class="hero hero--no-media">
+      <div class="hero-text">
+        <h2>Применение глубоких свёрточных нейронных сетей для классификации новообразований кожи</h2>
+        Ранняя и точная диагностика злокачественных новообразований кожи, таких как меланома, является ключевым
+        фактором успешного лечения. Современные методы глубокого обучения, в частности <strong>свёрточные нейронные
+          сети (CNN)</strong>, демонстрируют высокий потенциал в качестве систем поддержки принятия врачебных решений,
+        способных анализировать дерматоскопические изображения с высокой точностью.
+        <br>
+        Данный проект посвящён разработке и оценке ансамбля моделей на основе передовых архитектур CNN для
+        автоматической классификации семи различных типов поражений кожи. В качестве основы используется публичный
+        датасет
+        <a href="https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000">HAM10000</a>.
+      </div>
+
+    </section>
+
+    <section>
+      <h3>Цели и задачи проекта</h3>
+      <ul class="feature-list">
+        <li><strong>Исследование и подготовка данных:</strong> Анализ датасета HAM10000, его предобработка и
+          стратифицированное разделение на выборки.</li>
+        <li><strong>Обучение базовых моделей:</strong> Применение техники трансферного обучения для тонкой настройки
+          архитектур (ResNet50, DenseNet201, EfficientNetB0).</li>
+        <li><strong>Борьба с дисбалансом классов:</strong> Использование аугментации и генерации синтетических данных с
+          помощью StyleGAN2-ADA для повышения робастности моделей.</li>
+        <li><strong>Построение ансамбля:</strong> Разработка и оценка ансамблевых методов (Soft Voting, Stacking) для
+          повышения итоговой точности классификации.</li>
+        <li><strong>Анализ результатов:</strong> Комплексная оценка производительности с помощью релевантных метрик и
+          детальный разбор ошибок.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Структура проекта</h3>
+      <div class="cards">
+        <article class="card">
+          <h4>Датасет</h4>
+          Подробный анализ набора данных HAM10000, включая распределение классов, шаги предобработки и визуализацию
+          примеров. <br>
+          <a class="btn-link" href="dataset.html">Перейти к датасету</a>
+        </article>
+        <article class="card">
+          <h4>Модель</h4>
+          Описание выбранных CNN-архитектур, методологии трансферного обучения, генерации данных и техник
+          ансамблирования. <br>
+          <a class="btn-link" href="model.html">Изучить модель</a>
+        </article>
+        <article class="card">
+          <h4>Результаты</h4>
+          Комплексная оценка производительности моделей с использованием ключевых метрик, сравнительных таблиц и
+          анализа матрицы ошибок. <br>
+          <a class="btn-link" href="results.html">Смотреть результаты</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+</body>
+
+</html>

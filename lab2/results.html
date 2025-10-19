@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Результаты | Oncology CNN</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title"><span class="accent">Oncology</span> CNN</h1>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a class="nav-link" href="index.html">Главная</a>
+        <a class="nav-link" href="dataset.html">Датасет</a>
+        <a class="nav-link" href="model.html">Модель</a>
+        <a class="nav-link active" href="results.html">Результаты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Комплексная оценка производительности моделей</h2>
+      <p>
+        Для объективной оценки качества разработанных моделей классификации был использован набор стандартных и
+        специфичных для медицинской диагностики метрик. В данном разделе представлены определения ключевых показателей,
+        результаты сравнительного анализа моделей и детальный разбор ошибок классификации с помощью матрицы ошибок.
+      </p>
+    </section>
+
+    <section>
+      <h3>Ключевые метрики оценки</h3>
+      <div class="cards">
+        <article class="card">
+          <h4>Accuracy (Точность)</h4>
+          Доля всех правильно классифицированных объектов. Является базовой метрикой, однако её интерпретация может
+          быть затруднена в условиях несбалансированных классов.
+          <p><em>Формула: (TP + TN) / (TP + TN + FP + FN)</em></p>
+        </article>
+        <article class="card">
+          <h4>Precision (Точность предсказания)</h4>
+          Доля истинно положительных объектов среди всех, которые модель классифицировала как положительные. Высокая
+          точность важна для минимизации ложных диагнозов.
+          <p><em>Формула: TP / (TP + FP)</em></p>
+        </article>
+        <article class="card">
+          <h4>Recall (Чувствительность, Полнота)</h4>
+          Доля истинно положительных объектов, которые были успешно обнаружены моделью. Является критически важной
+          метрикой в медицине для минимизации пропуска опасных заболеваний.
+          <p><em>Формула: TP / (TP + FN)</em></p>
+        </article>
+        <article class="card">
+          <h4>Specificity (Специфичность)</h4>
+          Доля истинно отрицательных объектов, которые были правильно идентифицированы. Показывает способность модели
+          корректно определять отсутствие заболевания.
+          <p><em>Формула: TN / (TN + FP)</em></p>
+        </article>
+        <article class="card">
+          <h4>F1-Score (F-мера)</h4>
+          Гармоническое среднее между Precision и Recall. Позволяет получить сбалансированную оценку, особенно
+          полезную при работе с несбалансированными наборами данных.
+          <p><em>Формула: 2 * (Precision * Recall) / (Precision + Recall)</em></p>
+        </article>
+        <article class="card">
+          <h4>ROC-AUC</h4>
+          Площадь под кривой ошибок (Receiver Operating Characteristic). Демонстрирует качество модели независимо от
+          выбранного порога классификации. Значение, близкое к 1.0, указывает на высокую разделяющую способность.
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h3>Агрегированные метрики для мультиклассовой классификации</h3>
+      <p>Поскольку задача является мультиклассовой, для получения единой оценки по всем классам используются стратегии
+        усреднения:</p>
+      <ul>
+        <li><strong>Macro Average:</strong> Рассчитывает метрику для каждого класса отдельно, а затем находит их среднее
+          арифметическое. Все классы считаются равнозначными, независимо от их размера.</li>
+        <li><strong>Weighted Average:</strong> Также рассчитывает метрику для каждого класса, но усредняет их с учётом
+          веса каждого класса (т.е. количества экземпляров). Это более релевантно для несбалансированных данных.</li>
+      </ul>
+    </section>
+
+    <section class="table-wrap">
+      <h3>Сравнительная таблица производительности моделей</h3>
+      <p>В таблице ниже представлены итоговые результаты всех обученных моделей на тестовой выборке. Значения будут
+        заполнены после завершения всех экспериментов.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Модель</th>
+            <th>Accuracy</th>
+            <th>Weighted F1-Score</th>
+            <th>Macro F1-Score</th>
+            <th>ROC-AUC (OvR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="align-left">ResNet50</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <th class="align-left">DenseNet201</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <th class="align-left">EfficientNetB0</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <th class="align-left">Ансамбль (Soft Voting)</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <th class="align-left">Ансамбль (Stacking)</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-wrap">
+      <h3>Анализ ошибок: нормализованная матрица ошибок</h3>
+      <p>
+        Матрица ошибок (Confusion Matrix) позволяет детально проанализировать, какие классы модель путает между собой.
+        Матрица нормализована по строкам (по истинным классам), поэтому значения на главной диагонали соответствуют
+        метрике <strong>Recall</strong> для каждого класса. Ячейки вне диагонали показывают долю объектов, ошибочно
+        отнесённых к другим классам.
+      </p>
+      <table class="cm">
+        <thead>
+          <tr>
+            <th>Истинный \ Предсказанный</th>
+            <th>akiec</th>
+            <th>bcc</th>
+            <th>bkl</th>
+            <th>df</th>
+            <th>mel</th>
+            <th>nv</th>
+            <th>vasc</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="align-left">akiec</th>
+            <td class="cm-cell" style="--val: 0.82">0.82</td>
+            <td class="cm-cell" style="--val: 0.06">0.06</td>
+            <td class="cm-cell" style="--val: 0.05">0.05</td>
+            <td class="cm-cell" style="--val: 0.02">0.02</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.01">0.01</td>
+            <td class="cm-cell" style="--val: 0.01">0.01</td>
+          </tr>
+          <tr>
+            <th class="align-left">bcc</th>
+            <td class="cm-cell" style="--val: 0.04">0.04</td>
+            <td class="cm-cell" style="--val: 0.80">0.80</td>
+            <td class="cm-cell" style="--val: 0.06">0.06</td>
+            <td class="cm-cell" style="--val: 0.02">0.02</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.02">0.02</td>
+          </tr>
+          <tr>
+            <th class="align-left">bkl</th>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.05">0.05</td>
+            <td class="cm-cell" style="--val: 0.78">0.78</td>
+            <td class="cm-cell" style="--val: 0.04">0.04</td>
+            <td class="cm-cell" style="--val: 0.04">0.04</td>
+            <td class="cm-cell" style="--val: 0.05">0.05</td>
+            <td class="cm-cell" style="--val: 0.01">0.01</td>
+          </tr>
+          <tr>
+            <th class="align-left">df</th>
+            <td class="cm-cell" style="--val: 0.02">0.02</td>
+            <td class="cm-cell" style="--val: 0.02">0.02</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.86">0.86</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.01">0.01</td>
+          </tr>
+          <tr>
+            <th class="align-left">mel</th>
+            <td class="cm-cell" style="--val: 0.02">0.02</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.04">0.04</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.80">0.80</td>
+            <td class="cm-cell" style="--val: 0.07">0.07</td>
+            <td class="cm-cell" style="--val: 0.01">0.01</td>
+          </tr>
+          <tr>
+            <th class="align-left">nv</th>
+            <td class="cm-cell" style="--val: 0.01">0.01</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.04">0.04</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.05">0.05</td>
+            <td class="cm-cell" style="--val: 0.80">0.80</td>
+            <td class="cm-cell" style="--val: 0.04">0.04</td>
+          </tr>
+          <tr>
+            <th class="align-left">vasc</th>
+            <td class="cm-cell" style="--val: 0.01">0.01</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.02">0.02</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.03">0.03</td>
+            <td class="cm-cell" style="--val: 0.85">0.85</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <em>Примечание: представленные в матрице значения являются демонстрационными. Фактические результаты будут
+          размещены после завершения финального тестирования ансамбля моделей.</em>
+      </p>
+    </section>
+  </main>
+</body>
+
+</html>
