@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Лабораторная №4 — Grid</title>
+  <title>Лабораторная №5 — Grid & Async</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/data-loader.js"></script>
 </head>
 <body class="page">
   <header class="header">
@@ -27,6 +28,14 @@
   </section>
 
   <main class="main">
+    <section class="server-data" style="margin-bottom: 40px;">
+      <h2 class="section-title">Данные с сервера (Live)</h2>
+      <p style="color: var(--muted); margin-bottom: 16px;">Асинхронная загрузка каждые 30 секунд</p>
+      <div id="data-container">
+        <div class="loader">Ожидание загрузки...</div>
+      </div>
+    </section>
+
     <section class="cards cards--grid">
       <h2 class="section-title">Сетка карточек</h2>
       <div class="cards__list">
