@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Лабораторная №4 — Форма</title>
+  <title>Лабораторная №5 — Форма</title>
   <link rel="stylesheet" href="css/styles.css">
   <script defer src="js/form.js"></script>
   </head>
@@ -22,7 +22,7 @@
   <section class="hero">
     <div class="hero__content">
       <h1 class="hero__title">Страница формы</h1>
-      <p class="hero__subtitle">Отправка данных и форматированный вывод в консоль</p>
+      <p class="hero__subtitle">Валидация, события и асинхронная отправка</p>
     </div>
   </section>
 
@@ -33,14 +33,17 @@
         <div class="form__field">
           <label class="form__label" for="username">Логин</label>
           <input class="form__input" id="username" name="username" type="text" required>
+          <span class="form__error" id="usernameError">Имя должно содержать минимум 3 символа</span>
         </div>
         <div class="form__field">
           <label class="form__label" for="password">Пароль</label>
           <input class="form__input" id="password" name="password" type="password" required>
+          <span class="form__error" id="passwordError">Пароль должен быть не менее 8 символов</span>
         </div>
         <div class="form__field">
           <label class="form__label" for="email">Email</label>
           <input class="form__input" id="email" name="email" type="email">
+          <span class="form__error" id="emailError">Введите корректный email</span>
         </div>
         <div class="form__field form__field--inline">
           <input class="form__checkbox" id="agree" name="agree" type="checkbox">
