@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лабораторная №4 — Форма</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/form.js"></script>
+  </head>
+<body class="page">
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__brand">Web6403</div>
+      <nav class="nav">
+        <a class="nav__link" href="index.html">Grid</a>
+        <a class="nav__link" href="flex.html">Flexbox</a>
+        <a class="nav__link" href="form.html">Форма</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__content">
+      <h1 class="hero__title">Страница формы</h1>
+      <p class="hero__subtitle">Отправка данных и форматированный вывод в консоль</p>
+    </div>
+  </section>
+
+  <main class="main">
+    <section class="form">
+      <h2 class="section-title">Авторизация</h2>
+      <form class="form__body" id="authForm">
+        <div class="form__field">
+          <label class="form__label" for="username">Логин</label>
+          <input class="form__input" id="username" name="username" type="text" required>
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="password">Пароль</label>
+          <input class="form__input" id="password" name="password" type="password" required>
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="email">Email</label>
+          <input class="form__input" id="email" name="email" type="email">
+        </div>
+        <div class="form__field form__field--inline">
+          <input class="form__checkbox" id="agree" name="agree" type="checkbox">
+          <label class="form__label" for="agree">Согласие на обработку данных</label>
+        </div>
+        <button class="button" type="submit">Отправить</button>
+        <div class="form__message" id="formMessage"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">© 2025 Web6403</div>
+  </footer>
+</body>
+</html>
